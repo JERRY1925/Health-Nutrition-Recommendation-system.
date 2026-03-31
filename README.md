@@ -1,5 +1,3 @@
-# Health-Nutrition-Recommendation-system.
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Health & Nutrition Recommendation System</title>
 
-    <!-- 1. EmailJS SDK Correctly Placed & Initialized ONCE -->
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
@@ -15,16 +12,15 @@
     <script type="text/javascript">
       (function () {
         emailjs.init({
-          publicKey: "JxdpHOwUN2MISI3HU", // Your actual public key
+          publicKey: "JxdpHOwUN2MISI3HU",
         });
       })();
     </script>
 
     <style>
-      /* Modern Color Scheme & Smooth Scrolling */
       :root {
-        --primary-color: #2e7d32; /* Health Green */
-        --secondary-color: #e8f5e9; /* Light Green */
+        --primary-color: #2e7d32;
+        --secondary-color: #e8f5e9;
         --text-color: #333;
         --bg-color: #f4f7f6;
       }
@@ -32,8 +28,6 @@
       html {
         scroll-behavior: smooth;
       }
-
-      /* REMOVED the invalid script tag that was hiding here */
 
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -43,7 +37,6 @@
         line-height: 1.6;
       }
 
-      /* Header & Navigation */
       header {
         background: linear-gradient(135deg, #1b5e20, #4caf50);
         color: white;
@@ -81,7 +74,6 @@
         color: #81c784;
       }
 
-      /* Main Content Layout */
       .container {
         max-width: 1000px;
         margin: 0 auto;
@@ -108,7 +100,6 @@
         margin-top: 0;
       }
 
-      /* Form Styles */
       .form-group {
         margin-bottom: 15px;
       }
@@ -152,10 +143,9 @@
       #bmi-result,
       #session-result {
         margin-top: 20px;
-        display: none; /* Hidden until calculated/booked */
+        display: none;
       }
 
-      /* Booking Ticket Styles */
       .booking-ticket {
         background-color: var(--secondary-color);
         border: 2px dashed var(--primary-color);
@@ -206,7 +196,6 @@
         font-size: 0.9em;
       }
 
-      /* Gallery Grid Layout */
       .gallery-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -417,7 +406,6 @@
           <p>Examples of healthy routines and balanced diets.</p>
           <div class="gallery-grid">
             <div>
-              <!-- Swapped target="_main" to target="_blank" so links open safely in a new tab -->
               <a href="https://www.healthyfood.com/" target="_blank">
                 <img
                   src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=500&q=60"
