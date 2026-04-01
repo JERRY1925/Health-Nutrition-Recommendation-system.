@@ -141,7 +141,8 @@
       }
 
       #bmi-result,
-      #session-result {
+      #session-result,
+      #bill-result {
         margin-top: 20px;
         display: none;
       }
@@ -246,6 +247,8 @@
       <a href="#about">About</a>
       <a href="#features">Features</a>
       <a href="#bmi-calculator">BMI Calculator</a>
+      <a href="#bill-calculator">Bill Estimator</a>
+      <!-- Added link here -->
       <a href="#book-session">Book a Session</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
@@ -351,6 +354,51 @@
         </div>
       </section>
 
+      <!-- NEW BILL CALCULATOR SECTION ADDED HERE -->
+      <section id="bill-calculator">
+        <div class="card">
+          <h2>Consultation Bill Estimator</h2>
+          <p>Estimate the cost of your selected health packages.</p>
+
+          <div class="form-group">
+            <label for="diet-plan-qty"
+              >Diet Planning Sessions (₹500 each):</label
+            >
+            <input
+              type="number"
+              id="diet-plan-qty"
+              placeholder="e.g., 1"
+              min="0"
+            />
+          </div>
+          <div class="form-group">
+            <label for="workout-plan-qty"
+              >Workout Routine Sessions (₹800 each):</label
+            >
+            <input
+              type="number"
+              id="workout-plan-qty"
+              placeholder="e.g., 2"
+              min="0"
+            />
+          </div>
+
+          <button onclick="calculateBill()">Calculate Total Bill</button>
+
+          <div
+            id="bill-result"
+            style="
+              padding: 15px;
+              border-radius: 6px;
+              text-align: center;
+              font-weight: bold;
+              font-size: 1.2em;
+            "
+          ></div>
+        </div>
+      </section>
+      <!-- END BILL CALCULATOR -->
+
       <section id="book-session">
         <div class="card">
           <h2>Book a Consultation Session</h2>
@@ -444,9 +492,9 @@
           <p><strong>Name:</strong> Sahil Sharma</p>
           <p>
             <strong>Email:</strong>
-            <a href="mailto:mr.jerry1925@gmail.com">mr.jerry1925@gmail.com</a> ,
-            <a href="mailto:krishoff75@gmail.com">krishoff75@gmail.com</a>
+            <a href="mailto:mr.jerry1925@gmail.com">mr.jerry1925@gmail.com</a>
           </p>
+
           <p><strong>Phone:</strong> +91 8389024961</p>
           <p>
             <strong>Address:</strong> Kankarbagh, Patna, Bihar. India - 800002
@@ -518,6 +566,34 @@
         resultDiv.style.color = textColor;
         resultDiv.innerHTML = `${greeting}Your BMI is <strong>${bmi}</strong>. This is considered: <strong>${category}</strong>.`;
       }
+
+      // NEW JAVASCRIPT LOGIC FOR BILL ESTIMATOR
+      function calculateBill() {
+        let dietQty =
+          parseInt(document.getElementById("diet-plan-qty").value) || 0;
+        let workoutQty =
+          parseInt(document.getElementById("workout-plan-qty").value) || 0;
+        let resultDiv = document.getElementById("bill-result");
+
+        if (dietQty <= 0 && workoutQty <= 0) {
+          resultDiv.style.display = "block";
+          resultDiv.style.backgroundColor = "#ffebee";
+          resultDiv.style.color = "#c62828";
+          resultDiv.innerHTML = "Please enter at least 1 session to calculate.";
+          return;
+        }
+
+        // Multiply quantities by their respective prices
+        let total = dietQty * 500 + workoutQty * 800;
+
+        resultDiv.style.display = "block";
+        resultDiv.style.backgroundColor = "#e8f5e9";
+        resultDiv.style.color = "#2e7d32";
+
+        // Outputting the Total with the Rupee (₹) symbol
+        resultDiv.innerHTML = `Your total estimated bill is <strong>₹${total}</strong>.`;
+      }
+      // END BILL ESTIMATOR LOGIC
 
       function bookSession() {
         let name = document.getElementById("session-name").value;
