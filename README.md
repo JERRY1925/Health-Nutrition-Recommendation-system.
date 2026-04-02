@@ -248,7 +248,6 @@
       <a href="#features">Features</a>
       <a href="#bmi-calculator">BMI Calculator</a>
       <a href="#bill-calculator">Bill Estimator</a>
-      <!-- Added link here -->
       <a href="#book-session">Book a Session</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
@@ -259,12 +258,11 @@
         <div class="card">
           <h2>Introduction</h2>
           <p>
-            Hello Everybody, we are all members of Capstone project Group no:
+            Hello Everybody, we are all members of Capstone Project, Group No.
             165, our names are <strong>Sahil Sharma</strong>,
-            <strong>Lakshay Sharma</strong>, <strong>Krish Sharma</strong>,
-            <strong>Shalini Sharma</strong>, and
-            <strong>Srishty Sharma</strong> pursuing
-            <strong>Bachelor of Science</strong> in
+            <strong>Shalini Sharma</strong>, <strong>Lakshay Sharma</strong>,
+            <strong>Krish Sharma</strong>, and <strong>Srishty Sharma</strong>.
+            We are pursuing <strong>Bachelor of Science</strong> in
             <strong>Computer Science & Data Analytics</strong> from IIT Patna.
             Welcome to our first website! This project represents our initial
             steps into combining web development with health-focused technology.
@@ -354,7 +352,6 @@
         </div>
       </section>
 
-      <!-- NEW BILL CALCULATOR SECTION ADDED HERE -->
       <section id="bill-calculator">
         <div class="card">
           <h2>Consultation Bill Estimator</h2>
@@ -362,7 +359,7 @@
 
           <div class="form-group">
             <label for="diet-plan-qty"
-              >Diet Planning Sessions (₹500 each):</label
+              >Diet Planning Sessions (₹799 each):</label
             >
             <input
               type="number"
@@ -373,7 +370,7 @@
           </div>
           <div class="form-group">
             <label for="workout-plan-qty"
-              >Workout Routine Sessions (₹800 each):</label
+              >Workout Routine Sessions (₹1499 each):</label
             >
             <input
               type="number"
@@ -397,8 +394,6 @@
           ></div>
         </div>
       </section>
-      <!-- END BILL CALCULATOR -->
-
       <section id="book-session">
         <div class="card">
           <h2>Book a Consultation Session</h2>
@@ -567,7 +562,7 @@
         resultDiv.innerHTML = `${greeting}Your BMI is <strong>${bmi}</strong>. This is considered: <strong>${category}</strong>.`;
       }
 
-      // NEW JAVASCRIPT LOGIC FOR BILL ESTIMATOR
+      // NEW FIXED BILL ESTIMATOR LOGIC
       function calculateBill() {
         let dietQty =
           parseInt(document.getElementById("diet-plan-qty").value) || 0;
@@ -583,15 +578,34 @@
           return;
         }
 
-        // Multiply quantities by their respective prices
-        let total = dietQty * 500 + workoutQty * 800;
+        // Calculate Subtotal using the correct variables
+        let subtotal = dietQty * 799 + workoutQty * 1499;
+
+        // Calculate 28% GST
+        let gst = subtotal * 0.28;
+
+        // Calculate Grand Total
+        let grandTotal = subtotal + gst;
 
         resultDiv.style.display = "block";
         resultDiv.style.backgroundColor = "#e8f5e9";
         resultDiv.style.color = "#2e7d32";
 
-        // Outputting the Total with the Rupee (₹) symbol
-        resultDiv.innerHTML = `Your total estimated bill is <strong>₹${total}</strong>.`;
+        // Outputting the Subtotal, GST, and Grand Total with the Rupee (₹) symbol
+        resultDiv.innerHTML = `
+          <div style="text-align: left; max-width: 250px; margin: 0 auto;">
+            <p style="margin: 5px 0; display: flex; justify-content: space-between;">
+              <span>Subtotal:</span> <span>₹${subtotal.toFixed(2)}</span>
+            </p>
+            <p style="margin: 5px 0; display: flex; justify-content: space-between;">
+              <span>GST (28%):</span> <span>₹${gst.toFixed(2)}</span>
+            </p>
+            <hr style="border: 0.5px solid #2e7d32;">
+            <p style="margin: 5px 0; display: flex; justify-content: space-between; font-size: 1.2em;">
+              <strong>Grand Total:</strong> <strong>₹${grandTotal.toFixed(2)}</strong>
+            </p>
+          </div>
+        `;
       }
       // END BILL ESTIMATOR LOGIC
 
